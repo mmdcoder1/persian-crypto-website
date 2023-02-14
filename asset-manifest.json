@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/persian-crypto-website/static/css/main.71811a04.css",
-    "main.js": "/persian-crypto-website/static/js/main.c400f8bd.js",
+    "main.js": "/persian-crypto-website/static/js/main.86f7d74d.js",
     "static/media/Dana-Thin.ttf": "/persian-crypto-website/static/media/Dana-Thin.6805be45e818a54f0f6f.ttf",
     "static/media/Dana-Light.ttf": "/persian-crypto-website/static/media/Dana-Light.fd765e17de745a385959.ttf",
     "static/media/Dana-Regular.ttf": "/persian-crypto-website/static/media/Dana-Regular.6bb129e5c9c295de7e27.ttf",
@@ -12,10 +12,10 @@
     "static/media/Dana-Black.ttf": "/persian-crypto-website/static/media/Dana-Black.1be02838b230d5dcfec6.ttf",
     "index.html": "/persian-crypto-website/index.html",
     "main.71811a04.css.map": "/persian-crypto-website/static/css/main.71811a04.css.map",
-    "main.c400f8bd.js.map": "/persian-crypto-website/static/js/main.c400f8bd.js.map"
+    "main.86f7d74d.js.map": "/persian-crypto-website/static/js/main.86f7d74d.js.map"
   },
   "entrypoints": [
     "static/css/main.71811a04.css",
-    "static/js/main.c400f8bd.js"
+    "static/js/main.86f7d74d.js"
   ]
 }
