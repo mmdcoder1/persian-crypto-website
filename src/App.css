@@ -1,38 +1,26 @@
-.App {
-  text-align: center;
+@import url('./fonts/fontstyle');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+ 
+:root {
+    --black: #3D3F53;
+    --white: #ffffff;
+    --blue: #327CF7;
+    --red: #ff5e58; 
+    --green: #62cf9a;
+    --gray: #ACB4C7;
+    --gray-light: #F8FAFC;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+   font-family: dana;
+   background: rgb(245,248,255);
+   background: linear-gradient(163deg, rgba(245,248,255,1) 10%, rgba(205,214,235,1) 100%);
+   min-height: 100vh;
+   padding: 2rem;
 }
