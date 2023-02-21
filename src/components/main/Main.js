@@ -10,10 +10,12 @@ const Main = () => {
     const [state, setState] = useState({loading: true});
 
     useEffect(() => {
-        fetch('http://localhost:4000/coins')
-            .then(response => response.json())
-            .then(data => setState({status: 200,result: data}))
+        const getData = async () => {
+           await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d')
+            .then(response => setState({status: 200,result: response.data}))
             .catch(() => setState({error: true}));
+        }
+        getData();
     }, [])
 
     const percentConverter = (value) => {
