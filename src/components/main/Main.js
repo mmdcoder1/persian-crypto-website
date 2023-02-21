@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PN from 'persian-number';
+import axios from 'axios';
+import errorImage from '../../images/error.png';
 
 //style
 import styles from './main.module.css';
@@ -8,15 +10,21 @@ const Main = () => {
     const [state, setState] = useState({loading: true});
 
     useEffect(() => {
-        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d")
+        fetch('http://localhost:4000/coins')
             .then(response => response.json())
             .then(data => setState({status: 200,result: data}))
             .catch(() => setState({error: true}));
     }, [])
 
     const percentConverter = (value) => {
-        let convert = value.toFixed(2);
-        let el = <td className={styles.td + " " + (value > 0 ? styles.green: styles.red)}>%{PN.convertEnToPe(convert)}</td>
+        let convert;
+        let el;
+        if(typeof value === 'number') {
+            convert = value.toFixed(2);
+            el = <td className={styles.td + " " + (value > 0 ? styles.green: styles.red)}>%{PN.convertEnToPe(convert)}</td>
+        } else {
+            el = <td className={styles.td}>____</td>   
+        }
         return el;
     }
 
@@ -25,7 +33,19 @@ const Main = () => {
             return  <tr>
                         <td><span class={styles.loader}></span></td>
                     </tr>
-        } else if (state.status === 200){
+        } else if(state.error) { 
+            return (
+               <>
+                  <div className={styles.overlay}></div>
+                  <div className={styles.errorContainer}>
+                    <img className={styles.errorImage} src={errorImage} alt='ارور' />
+                    <h3 className={styles.errorText}>!متاسفانه مشکلی پیش آمده است</h3>
+                 </div>
+               </>
+            )
+         }
+         else if (state.status === 200){
+            console.log(state);
             return state.result.map((coin, i) => <tr className={styles.tr} key={coin.id}>
                                                     <td className={styles.td}>{PN.convertEnToPe(i + 1)}</td>
                                                     <td className={styles.td + " " + styles.coinName}>
@@ -39,7 +59,7 @@ const Main = () => {
                                                     {percentConverter(coin.price_change_percentage_24h_in_currency)}
                                                     <td className={styles.td}>$ {PN.convertEnToPe(PN.sliceNumber(coin.market_cap))}</td>
                                              </tr>)
-        } else if(state.error) { return <div>مشکلی پیش امده است</div> }
+        } 
     } 
    
     return (
